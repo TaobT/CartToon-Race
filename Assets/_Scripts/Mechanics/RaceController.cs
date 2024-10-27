@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class RaceController : MonoBehaviour
 {
+    public enum RaceState
+    {
+        NotStarted,
+        Racing,
+        Finished
+    }
+
     public static RaceController instance;
     [SerializeField] private int totalCheckpoints;
 
