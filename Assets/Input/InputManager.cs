@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public static class InputManager 
 {
+    
     private static bool isInitialized = false;
 
     private static PlayerControllers playerControllers;
@@ -61,5 +62,30 @@ public static class InputManager
     private static void OnInputSteering(InputAction.CallbackContext ctx)
     {
         steeringDirection = ctx.ReadValue<float>();
+    }
+
+    
+
+    public static void Mobile_OnInputAccelerator(bool performed)
+    {
+        if(performed) OnAcceleratorPerformed.Invoke();
+        else OnAcceleratorCanceled?.Invoke();
+    }
+
+    public static void Mobile_OnInputReverse(bool performed)
+    {
+        if(performed) OnReversePerformed.Invoke(); 
+        else OnAcceleratorCanceled?.Invoke();
+    }
+
+    public static void Mobile_OnInputDrift(bool performed)
+    {
+        if(performed) OnDriftPerformed.Invoke();
+        else OnAcceleratorCanceled?.Invoke();
+    }
+
+    public static void Mobile_OnInputSteering(float direction)
+    {
+        steeringDirection = direction;
     }
 }
