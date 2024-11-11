@@ -14,8 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Database:
     Items:
+    - Category: InGameMenu
+      Name: PauseMenu
+    - Category: InGameMenu
+      Name: RaceResults
     - Category: MainMenu
       Name: ChooseCar
+    - Category: MainMenu
+      Name: ChooseLevel
     - Category: MainMenu
       Name: MainMenu
     - Category: MainMenu

@@ -1,18 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RaceController : MonoBehaviour
 {
-    public enum RaceState
-    {
-        NotStarted,
-        Racing,
-        Finished
-    }
-
     public static RaceController instance;
     [SerializeField] private int totalCheckpoints;
+    public static event UnityAction OnLapFinished;
 
     //Para un solo jugador (por ahora)
     private int nextCheckpoint = 0;
@@ -40,6 +35,7 @@ public class RaceController : MonoBehaviour
             {
                 nextCheckpoint = 0;
                 Debug.Log("Vuelta Completada");
+                OnLapFinished?.Invoke();
             }
         }
     }
