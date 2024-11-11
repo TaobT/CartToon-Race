@@ -14,6 +14,10 @@ namespace Doozy.Runtime.UIManager.Containers
 {
     public partial class UIView
     {
+        public static IEnumerable<UIView> GetViews(UIViewId.InGameMenu id) => GetViews(nameof(UIViewId.InGameMenu), id.ToString());
+        public static void Show(UIViewId.InGameMenu id, bool instant = false) => Show(nameof(UIViewId.InGameMenu), id.ToString(), instant);
+        public static void Hide(UIViewId.InGameMenu id, bool instant = false) => Hide(nameof(UIViewId.InGameMenu), id.ToString(), instant);
+
         public static IEnumerable<UIView> GetViews(UIViewId.MainMenu id) => GetViews(nameof(UIViewId.MainMenu), id.ToString());
         public static void Show(UIViewId.MainMenu id, bool instant = false) => Show(nameof(UIViewId.MainMenu), id.ToString(), instant);
         public static void Hide(UIViewId.MainMenu id, bool instant = false) => Hide(nameof(UIViewId.MainMenu), id.ToString(), instant);
@@ -24,9 +28,16 @@ namespace Doozy.Runtime.UIManager
 {
     public partial class UIViewId
     {
+        public enum InGameMenu
+        {
+            PauseMenu,
+            RaceResults
+        }
+
         public enum MainMenu
         {
             ChooseCar,
+            ChooseLevel,
             MainMenu,
             Settings
         }    

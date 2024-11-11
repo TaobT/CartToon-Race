@@ -22,5 +22,9 @@ public class LevelLoader : MonoBehaviour
         }
     }
 
-
+    public void LoadLevel()
+    {
+        //Load level1
+        UnityEngine.SceneManagement.SceneManager.LoadScene(Level1Name);
+    }
 }

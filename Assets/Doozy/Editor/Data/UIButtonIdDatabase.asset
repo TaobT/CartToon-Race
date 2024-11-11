@@ -15,6 +15,10 @@ MonoBehaviour:
   Database:
     Items:
     - Category: MainMenuButtons
+      Name: AcceptCar
+    - Category: MainMenuButtons
+      Name: AcceptLevel
+    - Category: MainMenuButtons
       Name: Exit
     - Category: MainMenuButtons
       Name: NewGame

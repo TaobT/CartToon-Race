@@ -75,13 +75,13 @@ public static class InputManager
     public static void Mobile_OnInputReverse(bool performed)
     {
         if(performed) OnReversePerformed.Invoke(); 
-        else OnAcceleratorCanceled?.Invoke();
+        else OnReverseCanceled?.Invoke();
     }
 
     public static void Mobile_OnInputDrift(bool performed)
     {
         if(performed) OnDriftPerformed.Invoke();
-        else OnAcceleratorCanceled?.Invoke();
+        else OnDriftCanceled?.Invoke();
     }
 
     public static void Mobile_OnInputSteering(float direction)

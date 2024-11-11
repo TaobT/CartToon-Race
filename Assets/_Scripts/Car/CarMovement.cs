@@ -53,6 +53,8 @@ public class CarMovement : MonoBehaviour
     private bool isGainingBoost;
     private float currentGainingBoostTime;
 
+    private bool canMove;
+
     private void Awake()
     {
         InputManager.Initialize();
@@ -62,6 +64,8 @@ public class CarMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+
+        if (!canMove) return;
         if(isAccelerating)
         {
             Acelerate(acceleration);
@@ -82,14 +86,15 @@ public class CarMovement : MonoBehaviour
             Decelerate(naturalDeceleration);
         }
 
-        Steering();
         MoveCar();
+        Steering();
 
         GainingBoost();
     }
 
     private void MoveCar()
     {
+        if (!canMove) return;
         float totalCurrentSpeed = currentSpeed;
 
         if(isBoosted)
@@ -247,6 +252,8 @@ public class CarMovement : MonoBehaviour
 
     private void StartDrifting()
     {
+        if (!canMove) return;
+
         isDrifting = true;
         isGainingBoost = true;
         isDriftingRight = InputManager.SteeringDirection > 0;
@@ -259,6 +266,8 @@ public class CarMovement : MonoBehaviour
 
     private void StopDrifting()
     {
+        if(!canMove) return;
+
         isDrifting = false;
         CalculateBoost();
         isGainingBoost = false;
@@ -267,5 +276,10 @@ public class CarMovement : MonoBehaviour
         {
             trail.emitting = false;
         }
+    }
+
+    public void SetCanMove(bool value)
+    {
+        canMove = value;
     }
 }
