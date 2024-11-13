@@ -24,4 +24,9 @@ public class ResultsView : MonoBehaviour
             lapResultComponent.SetLapResultInfo(i + 1, results.lapsTimes[i].ToString());
         }
     }
+
+    public void NextLevel()
+    {
+        LevelLoader.Instance.LoadNextLevel();
+    }
 }
