@@ -4,23 +4,32 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance { get; private set; }
+
     private bool race1Completed = false;
+    private RaceResults race1Results = new RaceResults();
     private bool race2Completed = false;
+    private RaceResults race2Results = new RaceResults();
     private bool race3Completed = false;
+    private RaceResults race3Results = new RaceResults();
 
-    public void MarkRace1Completed()
-    {
-        race1Completed = true;
-    }
+    public bool Race1Completed => race1Completed;
+    public RaceResults Race1Results => race1Results;
+    public bool Race2Completed => race2Completed;
+    public RaceResults Race2Results => race2Results;
+    public bool Race3Completed => race3Completed;
+    public RaceResults Race3Results => race3Results;
 
-    public void MarkRace2Completed()
+    private void Awake()
     {
-        race2Completed = true;
-    }
-
-    public void MarkRace3Completed()
-    {
-        race3Completed = true;
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public bool IsGameCompleted()
@@ -41,5 +50,23 @@ public class GameManager : MonoBehaviour
     public bool IsRace3Completed()
     {
         return race3Completed;
+    }
+
+    public void RegisterRace1Results(RaceResults results)
+    {
+        race1Results = results;
+        race1Completed = true;
+    }
+
+    public void RegisterRace2Results(RaceResults results)
+    {
+        race2Results = results;
+        race2Completed = true;
+    }
+
+    public void RegisterRace3Results(RaceResults results)
+    {
+        race3Results = results;
+        race3Completed = true;
     }
 }

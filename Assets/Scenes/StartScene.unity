@@ -43691,7 +43691,7 @@ MonoBehaviour:
   IsLocked: 0
   OverrideInteractabilityForToggles: 0
   ToggleGroupValue: 0
-  Mode: 0
+  Mode: 1
   HasMixedValues: 0
   AutoSort: 1
   OnToggleGroupMixedValuesCallback:

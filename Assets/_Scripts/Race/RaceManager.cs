@@ -17,6 +17,7 @@ public class RaceManager : MonoBehaviour
     private RacePhase currentPhase = RacePhase.None;
     public RacePhase CurrentPhase => currentPhase;
 
+    [SerializeField] private GameObject resultsView;
     [SerializeField] private Transform carModel;
     [SerializeField] private CarMovement carMovement;
     [SerializeField] private Animator countDown;
@@ -104,6 +105,7 @@ public class RaceManager : MonoBehaviour
         raceResults.lapsTimes.Add(TimeSpan.FromSeconds(Time.time - lapStartTime));
 
         //Show results screen
+        resultsView.SetActive(true);
         carMovement.SetCanMove(false);
     }
 
