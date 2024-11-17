@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ResultsView : MonoBehaviour
@@ -7,6 +8,7 @@ public class ResultsView : MonoBehaviour
     [SerializeField] private RaceManager raceManager;
     [SerializeField] private GameObject lapResultPrefab;
     [SerializeField] private Transform lapResultsParent;
+    [SerializeField] private TextMeshProUGUI totalTimeText;
 
     private void OnEnable()
     {
@@ -27,6 +29,10 @@ public class ResultsView : MonoBehaviour
 
     public void NextLevel()
     {
-        LevelLoader.Instance.LoadNextLevel();
+        if (!LevelLoader.Instance.LoadNextLevel())
+        {
+            //No hay mas niveles, volver al menu principal
+            LevelLoader.Instance.LoadLevel();
+        }
     }
 }

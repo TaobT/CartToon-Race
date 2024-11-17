@@ -20,9 +20,22 @@ public class GameManager : MonoBehaviour
     public bool Race3Completed => race3Completed;
     public RaceResults Race3Results => race3Results;
 
+    public bool AllRacesCompleted => race1Completed && race2Completed && race3Completed;
+
+    public void ReiniciarTodo()
+    {
+        race1Completed = false;
+        race2Completed = false;
+        race3Completed = false;
+
+        race3Results = new RaceResults();
+        race1Results = new RaceResults();
+        race2Results = new RaceResults();
+    }
+
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
         }
@@ -68,5 +81,10 @@ public class GameManager : MonoBehaviour
     {
         race3Results = results;
         race3Completed = true;
+    }
+
+    public List<RaceResults> GetAllRaceResults()
+    {
+        return new List<RaceResults> { race1Results, race2Results, race3Results };
     }
 }

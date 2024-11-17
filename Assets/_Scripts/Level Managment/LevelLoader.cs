@@ -22,25 +22,35 @@ public class LevelLoader : MonoBehaviour
         }
     }
 
+    public void LoadStartScene()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("StartScene");
+    }
+
     public void LoadLevel()
     {
         //Load level1
         UnityEngine.SceneManagement.SceneManager.LoadScene(Level1Name);
     }
 
-    public void LoadNextLevel()
+    public bool LoadNextLevel()
     {
         if (!GameManager.Instance.Race1Completed)
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(Level1Name);
+            return true;
         }
         else if(!GameManager.Instance.Race2Completed)
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(Level2Name);
+            return true;
         }
         else if(!GameManager.Instance.Race3Completed)
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(Level3Name);
+            return true;
         }
+
+        return false;
     }
 }
