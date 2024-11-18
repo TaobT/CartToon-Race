@@ -14,9 +14,17 @@ public class RaceManager : MonoBehaviour
         Finished
     }
 
+    public enum RaceLevel
+    {
+        First,
+        Second,
+        Third
+    }
+
     private RacePhase currentPhase = RacePhase.None;
     public RacePhase CurrentPhase => currentPhase;
 
+    [SerializeField] private RaceLevel raceLevel;
     [SerializeField] private GameObject resultsView;
     [SerializeField] private Transform carModel;
     [SerializeField] private CarMovement carMovement;
@@ -107,6 +115,19 @@ public class RaceManager : MonoBehaviour
         //Show results screen
         resultsView.SetActive(true);
         carMovement.SetCanMove(false);
+
+        switch (raceLevel)
+        {
+            case RaceLevel.First:
+                GameManager.Instance.RegisterRace1Results(raceResults);
+                break;
+            case RaceLevel.Second:
+                GameManager.Instance.RegisterRace2Results(raceResults);
+                break;
+            case RaceLevel.Third:
+                GameManager.Instance.RegisterRace3Results(raceResults);
+                break;
+        }
     }
 
     public float GetCurrentLapTime()

@@ -7717,6 +7717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b590659fc4ecd674bb6c143a91e883bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  raceLevel: 0
   resultsView: {fileID: 1051096441}
   carModel: {fileID: 617662030}
   carMovement: {fileID: 452364260}
@@ -11333,7 +11334,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &284248122
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12371,7 +12372,7 @@ RectTransform:
   m_Father: {fileID: 1195801521}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -12528,7 +12529,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.09853762, y: 0.000000004280661, z: -4.238689e-10, w: 0.99513334}
+  m_LocalRotation: {x: 0.098537624, y: -0.0000000042806607, z: 4.238689e-10, w: 0.99513334}
   m_LocalPosition: {x: 0, y: 3, z: -2.533}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -16207,7 +16208,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 96
+  m_Constraints: 64
   m_CollisionDetection: 0
 --- !u!114 &452364260
 MonoBehaviour:
@@ -29299,7 +29300,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1051096442
 RectTransform:
   m_ObjectHideFlags: 0
@@ -30002,6 +30003,7 @@ MonoBehaviour:
   lapResultPrefab: {fileID: 3120350281778069246, guid: b9615609a39108e4596ce08d1b6c74a9,
     type: 3}
   lapResultsParent: {fileID: 2053938530}
+  totalTimeText: {fileID: 2097908917}
 --- !u!1 &1051441167 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8cf4c7ff5609a174a8f27ba38adc6a22,
@@ -50817,7 +50819,50 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls: []
   Behaviours:
-    Behaviours: []
+    Behaviours:
+    - EventName: PointerDown
+      Runners: []
+      Event:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1594397443}
+            m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_MethodName: SetActive
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+          - m_Target: {fileID: 1594397443}
+            m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_MethodName: SetActive
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+      BehaviourName: 2
+      Receiver:
+        ConnectionMode: 1
+        SignalProviderId:
+          Type: 0
+          Category: Pointer
+          Name: Down
+        ProviderReference: {fileID: 0}
+        StreamId:
+          Category: None
+          Name: None
+          Custom: 0
+      Cooldown: 0
+      Selectable: {fileID: 1672084158}
     SignalSource: {fileID: 1672084156}
     Selectable: {fileID: 1672084158}
   Cooldown: 0
@@ -58276,12 +58321,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raceManager: {fileID: 225270827}
+  carMovement: {fileID: 452364260}
   currentLapTime: {fileID: 1344573046}
   lapTimePf: {fileID: 0}
   lapTimeParent: {fileID: 0}
   currentLap: {fileID: 1787661962}
   totalLaps: {fileID: 1571429066}
-  turboSlider: {fileID: 0}
+  turboSlider: {fileID: 1178169492}
 --- !u!1001 &1927693510
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59328,7 +59374,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1965173110}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.09853762, y: 0.000000004280661, z: -4.238689e-10, w: 0.99513334}
+  m_LocalRotation: {x: 0.098537624, y: -0.0000000042806607, z: 4.238689e-10, w: 0.99513334}
   m_LocalPosition: {x: 0, y: 3, z: -2.533}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

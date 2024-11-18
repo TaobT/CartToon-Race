@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
     [SerializeField] private RaceManager raceManager;
+    [SerializeField] private CarMovement carMovement;
 
     [Header("Time Tracker")]
     [SerializeField] private TextMeshProUGUI currentLapTime; // Text for current lap time
@@ -61,5 +62,10 @@ public class UIController : MonoBehaviour
         if (raceManager.CurrentPhase != RaceManager.RacePhase.Racing) return;
         float currentLapTime = raceManager.GetCurrentLapTime();
         this.currentLapTime.text = currentLapTime.ToString("00:00.00");
+    }
+
+    public void TurboSliderValue()
+    {
+        turboSlider.value = carMovement.GetBoostFactor();
     }
 }

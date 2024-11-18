@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5719426265764560070}
-  - component: {fileID: 1723149153035275116}
+  - component: {fileID: 284505901167131178}
   m_Layer: 5
   m_Name: RaceResult
   m_TagString: Untagged
@@ -38,7 +38,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 63.21}
   m_Pivot: {x: 0, y: 0.5}
---- !u!114 &1723149153035275116
+--- !u!114 &284505901167131178
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47,10 +47,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2281141501115292460}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db390a6011451384e8d75df9619809f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 25a7f2fb4c59e974fbbd5e6fd7d9fa41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lapNumberText: {fileID: 4185079537893522442}
+  raceNameText: {fileID: 4185079537893522442}
   lapTimeText: {fileID: 8621657957172926796}
 --- !u!1 &6744753765181649897
 GameObject:
@@ -278,8 +278,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

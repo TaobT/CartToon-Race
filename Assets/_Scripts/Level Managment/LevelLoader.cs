@@ -45,11 +45,11 @@ public class LevelLoader : MonoBehaviour
             UnityEngine.SceneManagement.SceneManager.LoadScene(Level2Name);
             return true;
         }
-        else if(!GameManager.Instance.Race3Completed)
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(Level3Name);
-            return true;
-        }
+        //else if(!GameManager.Instance.Race3Completed)
+        //{
+        //    UnityEngine.SceneManagement.SceneManager.LoadScene(Level3Name);
+        //    return true;
+        //}
 
         return false;
     }

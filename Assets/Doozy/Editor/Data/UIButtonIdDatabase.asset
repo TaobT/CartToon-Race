@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Database:
     Items:
+    - Category: EndGame
+      Name: AcceptResults
     - Category: MainMenuButtons
       Name: AcceptCar
     - Category: MainMenuButtons

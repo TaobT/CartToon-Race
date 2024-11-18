@@ -23,8 +23,11 @@ public class ResultsView : MonoBehaviour
         {
             GameObject lapResult = Instantiate(lapResultPrefab, lapResultsParent);
             LapResult lapResultComponent = lapResult.GetComponent<LapResult>();
-            lapResultComponent.SetLapResultInfo(i + 1, results.lapsTimes[i].ToString());
+            string lapTime = results.lapsTimes[i].Minutes.ToString("00") + ":" + results.lapsTimes[i].Seconds.ToString("00") + "." + (results.lapsTimes[i].Milliseconds/10).ToString("00");
+            lapResultComponent.SetLapResultInfo(i + 1, lapTime);
         }
+        string totalTime = results.TotalRaceTime().Minutes.ToString("00") + ":" + results.TotalRaceTime().Seconds.ToString("00") + "." + (results.TotalRaceTime().Milliseconds/10).ToString("00");
+        totalTimeText.text = totalTime;
     }
 
     public void NextLevel()
@@ -32,7 +35,7 @@ public class ResultsView : MonoBehaviour
         if (!LevelLoader.Instance.LoadNextLevel())
         {
             //No hay mas niveles, volver al menu principal
-            LevelLoader.Instance.LoadLevel();
+            LevelLoader.Instance.LoadStartScene();
         }
     }
 }

@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     public bool Race3Completed => race3Completed;
     public RaceResults Race3Results => race3Results;
 
-    public bool AllRacesCompleted => race1Completed && race2Completed && race3Completed;
+    public bool AllRacesCompleted => race1Completed && race2Completed;
 
     public void ReiniciarTodo()
     {
@@ -38,16 +38,12 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(Instance);
         }
         else
         {
             Destroy(gameObject);
         }
-    }
-
-    public bool IsGameCompleted()
-    {
-        return race1Completed && race2Completed && race3Completed;
     }
 
     public bool IsRace1Completed()
@@ -85,6 +81,11 @@ public class GameManager : MonoBehaviour
 
     public List<RaceResults> GetAllRaceResults()
     {
-        return new List<RaceResults> { race1Results, race2Results, race3Results };
+        return new List<RaceResults> { race1Results, race2Results };
+    }
+
+    public float GetTotalRaceTime()
+    {
+        return race1Results.TotalRaceTime().Seconds + race2Results.TotalRaceTime().Seconds;
     }
 }

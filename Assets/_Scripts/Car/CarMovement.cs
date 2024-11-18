@@ -282,4 +282,9 @@ public class CarMovement : MonoBehaviour
     {
         canMove = value;
     }
+
+    public float GetBoostFactor()
+    {
+        return currentBoostTime / driftBonusSpeedDuration;
+    }
 }
