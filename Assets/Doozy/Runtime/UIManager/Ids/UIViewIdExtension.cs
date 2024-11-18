@@ -18,10 +18,6 @@ namespace Doozy.Runtime.UIManager.Containers
         public static void Show(UIViewId.EndGame id, bool instant = false) => Show(nameof(UIViewId.EndGame), id.ToString(), instant);
         public static void Hide(UIViewId.EndGame id, bool instant = false) => Hide(nameof(UIViewId.EndGame), id.ToString(), instant);
 
-        public static IEnumerable<UIView> GetViews(UIViewId.EndGameMenus id) => GetViews(nameof(UIViewId.EndGameMenus), id.ToString());
-        public static void Show(UIViewId.EndGameMenus id, bool instant = false) => Show(nameof(UIViewId.EndGameMenus), id.ToString(), instant);
-        public static void Hide(UIViewId.EndGameMenus id, bool instant = false) => Hide(nameof(UIViewId.EndGameMenus), id.ToString(), instant);
-
         public static IEnumerable<UIView> GetViews(UIViewId.InGameMenu id) => GetViews(nameof(UIViewId.InGameMenu), id.ToString());
         public static void Show(UIViewId.InGameMenu id, bool instant = false) => Show(nameof(UIViewId.InGameMenu), id.ToString(), instant);
         public static void Hide(UIViewId.InGameMenu id, bool instant = false) => Hide(nameof(UIViewId.InGameMenu), id.ToString(), instant);
@@ -40,11 +36,6 @@ namespace Doozy.Runtime.UIManager
         {
             RaceResults,
             Records
-        }
-
-        public enum EndGameMenus
-        {
-            RacesResults
         }
 
         public enum InGameMenu
