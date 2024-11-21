@@ -20,8 +20,16 @@ public class SettingsMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        musicVolumeSlider.value = SoundManager.Instance.musicVolume;
-        sfxVolumeSlider.value = SoundManager.Instance.sfxVolume;
+        try
+        {
+            musicVolumeSlider.value = SoundManager.Instance.musicVolume;
+            sfxVolumeSlider.value = SoundManager.Instance.sfxVolume;
+        }
+        catch
+        {
+            musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1);
+            sfxVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume", 1);
+        }
     }
 
     public void AcceptSettings()
