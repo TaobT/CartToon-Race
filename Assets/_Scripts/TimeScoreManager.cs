@@ -61,6 +61,17 @@ public static class TimeScoreManager
         return times;
     }
 
+    public static List<TimeSpan> LoadTestTimes()
+    {
+        List<TimeSpan> floatTimes = new List<TimeSpan>();
+
+        floatTimes.Add(TimeSpan.FromSeconds(100));
+        floatTimes.Add(TimeSpan.FromSeconds(200));
+        floatTimes.Add(TimeSpan.FromSeconds(300));
+
+        return floatTimes;
+    }
+
     public static string FormatTime(float timeInSeconds)
     {
         // Formato MM:SS.ss

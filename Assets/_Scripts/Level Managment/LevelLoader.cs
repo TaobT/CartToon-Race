@@ -53,4 +53,9 @@ public class LevelLoader : MonoBehaviour
 
         return false;
     }
+
+    public void ReloadLevel()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+    }
 }
