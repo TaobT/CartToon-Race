@@ -13,7 +13,7 @@ public static class TimeScoreManager
         // Cargar los tiempos actuales desde PlayerPrefs
         List<TimeSpan> times = LoadTimes();
 
-        // Añadir el nuevo tiempo
+        // Aï¿½adir el nuevo tiempo
         times.Add(time);
 
         // Ordenar los tiempos de menor a mayor

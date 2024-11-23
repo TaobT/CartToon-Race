@@ -17,9 +17,13 @@ MonoBehaviour:
     - Category: EndGame
       Name: AcceptResults
     - Category: MainMenuButtons
+      Name: AccepSettings
+    - Category: MainMenuButtons
       Name: AcceptCar
     - Category: MainMenuButtons
       Name: AcceptLevel
+    - Category: MainMenuButtons
+      Name: CancelSettings
     - Category: MainMenuButtons
       Name: Exit
     - Category: MainMenuButtons
