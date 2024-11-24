@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ResultsView : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class ResultsView : MonoBehaviour
     [SerializeField] private GameObject lapResultPrefab;
     [SerializeField] private Transform lapResultsParent;
     [SerializeField] private TextMeshProUGUI totalTimeText;
+    [SerializeField] private Image medalImage;
+    [SerializeField] private Sprite bronzeMedal;
+    [SerializeField] private Sprite silverMedal;
+    [SerializeField] private Sprite goldMedal;
 
     private void OnEnable()
     {
@@ -28,6 +33,22 @@ public class ResultsView : MonoBehaviour
         }
         string totalTime = results.TotalRaceTime().Minutes.ToString("00") + ":" + results.TotalRaceTime().Seconds.ToString("00") + "." + (results.TotalRaceTime().Milliseconds/10).ToString("00");
         totalTimeText.text = totalTime;
+
+        //If total race time is bigger than 6 minutes, bronze medal
+        if (results.TotalRaceTime().TotalSeconds > 360)
+        {
+            medalImage.sprite = bronzeMedal;
+        }
+        //If total race time is bigger than 5 minutes, silver medal
+        else if (results.TotalRaceTime().TotalSeconds > 300)
+        {
+            medalImage.sprite = silverMedal;
+        }
+        //if total race time is lower than 6 minutes, gold medal
+        else
+        {
+            medalImage.sprite = goldMedal;
+        }
     }
 
     public void NextLevel()
