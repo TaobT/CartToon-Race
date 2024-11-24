@@ -1,4 +1,5 @@
 using Doozy.Runtime.UIManager.Components;
+using Doozy.Runtime.UIManager.Containers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,9 +9,20 @@ public class SettingsMenu : MonoBehaviour
 {
     [SerializeField] private UISlider musicVolumeSlider;
     [SerializeField] private UISlider sfxVolumeSlider;
+    private UIView view;
 
     private float lastMusicVolume;
     private float lastSFXVolume;
+
+    private void Awake()
+    {
+        view = GetComponent<UIView>();
+        view.OnShowCallback.Event.AddListener(() =>
+        {
+            lastMusicVolume = SoundManager.Instance.musicVolume;
+            lastSFXVolume = SoundManager.Instance.sfxVolume;
+        });
+    }
 
     private void Start()
     {

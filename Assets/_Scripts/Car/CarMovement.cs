@@ -12,7 +12,6 @@ public enum BoostLevel
 public class CarMovement : MonoBehaviour
 {
     private Rigidbody rb;
-    [SerializeField] private CarSoundManager carSoundManager;
     [Header("Limits")]
     [SerializeField] private float maxSpeed = 10f;
     [SerializeField] private float maxReverseSpeed = 5f;
@@ -198,8 +197,6 @@ public class CarMovement : MonoBehaviour
         isBoosted = true;
         currentBoostTime = driftBonusSpeedDuration;
         currentGainingBoostTime = 0;
-
-        carSoundManager.PlayBoostSound();
     }
 
 
@@ -239,8 +236,6 @@ public class CarMovement : MonoBehaviour
         {
             isBraking = true;
             isReverse = false;
-
-            carSoundManager.PlayBrakeSound();
         }
         else
         {
@@ -264,8 +259,6 @@ public class CarMovement : MonoBehaviour
         isDriftingRight = InputManager.SteeringDirection > 0;
         carModel.localRotation = Quaternion.Euler(0, isDriftingRight ? driftModelRotation : -driftModelRotation, 0);
 
-        carSoundManager.PlayDriftSound();
-
         foreach (TrailRenderer trail in driftMarks)
         {
             trail.emitting = true;
@@ -281,8 +274,6 @@ public class CarMovement : MonoBehaviour
         isGainingBoost = false;
         carModel.localRotation = Quaternion.Euler(0, 0, 0);
 
-        carSoundManager.StopDriftSound();
-
         foreach (TrailRenderer trail in driftMarks)
         {
             trail.emitting = false;
@@ -297,10 +288,5 @@ public class CarMovement : MonoBehaviour
     public float GetBoostFactor()
     {
         return currentBoostTime / driftBonusSpeedDuration;
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        carSoundManager.PlayCollisionSound(collision.contacts[0].point);
     }
 }

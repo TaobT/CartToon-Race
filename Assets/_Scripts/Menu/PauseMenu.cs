@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
+    private void Awake()
+    {
+        InputManager.OnPausePerformed += () => gameObject.SetActive(!gameObject.activeSelf);
+        gameObject.SetActive(false);
+    }
+
     private void OnEnable()
     {
         Time.timeScale = 0;
@@ -12,6 +18,7 @@ public class PauseMenu : MonoBehaviour
     private void OnDisable()
     {
         Time.timeScale = 1;
+        Debug.Log("PauseMenu Disabled");
     }
 
     public void Resume()
