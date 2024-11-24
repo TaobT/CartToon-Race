@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -70,7 +71,7 @@ public class SoundManager : MonoBehaviour
     public void SetMusicVolume(float volume)
     {
         // Mathematic formula for volume : 20 * log10(volume)
-        musicVolume = 20 * Mathf.Log10(Mathf.Clamp01(volume));
+        musicVolume = volume;
         musicSource.volume = musicVolume;
     }
 

@@ -20,6 +20,9 @@ public static class InputManager
     public static event UnityAction OnDriftPerformed;
     public static event UnityAction OnDriftCanceled;
 
+
+    public static event UnityAction OnPausePerformed;
+
     public static void Initialize()
     {
         if(isInitialized) return;
@@ -37,6 +40,8 @@ public static class InputManager
 
         playerControllers.Keyboard.Steering.performed += OnInputSteering;
         playerControllers.Keyboard.Steering.canceled += OnInputSteering;
+
+        playerControllers.Keyboard.Pause.performed += OnInputPause;
 
         isInitialized = true;
     }
@@ -64,7 +69,12 @@ public static class InputManager
         steeringDirection = ctx.ReadValue<float>();
     }
 
-    
+    private static void OnInputPause(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed) OnPausePerformed?.Invoke();
+    }
+
+
 
     public static void Mobile_OnInputAccelerator(bool performed)
     {

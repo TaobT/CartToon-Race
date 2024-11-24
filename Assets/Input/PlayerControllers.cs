@@ -62,6 +62,15 @@ public partial class @PlayerControllers: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""35df12e0-ef82-41a9-9c28-a8a85f30202c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -130,6 +139,17 @@ public partial class @PlayerControllers: IInputActionCollection2, IDisposable
                     ""action"": ""Steering"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""21bd9e4b-9497-47bc-8aaf-99a3ae04564d"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -142,6 +162,7 @@ public partial class @PlayerControllers: IInputActionCollection2, IDisposable
         m_Keyboard_Reverse = m_Keyboard.FindAction("Reverse", throwIfNotFound: true);
         m_Keyboard_Drift = m_Keyboard.FindAction("Drift", throwIfNotFound: true);
         m_Keyboard_Steering = m_Keyboard.FindAction("Steering", throwIfNotFound: true);
+        m_Keyboard_Pause = m_Keyboard.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -207,6 +228,7 @@ public partial class @PlayerControllers: IInputActionCollection2, IDisposable
     private readonly InputAction m_Keyboard_Reverse;
     private readonly InputAction m_Keyboard_Drift;
     private readonly InputAction m_Keyboard_Steering;
+    private readonly InputAction m_Keyboard_Pause;
     public struct KeyboardActions
     {
         private @PlayerControllers m_Wrapper;
@@ -215,6 +237,7 @@ public partial class @PlayerControllers: IInputActionCollection2, IDisposable
         public InputAction @Reverse => m_Wrapper.m_Keyboard_Reverse;
         public InputAction @Drift => m_Wrapper.m_Keyboard_Drift;
         public InputAction @Steering => m_Wrapper.m_Keyboard_Steering;
+        public InputAction @Pause => m_Wrapper.m_Keyboard_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Keyboard; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -236,6 +259,9 @@ public partial class @PlayerControllers: IInputActionCollection2, IDisposable
             @Steering.started += instance.OnSteering;
             @Steering.performed += instance.OnSteering;
             @Steering.canceled += instance.OnSteering;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IKeyboardActions instance)
@@ -252,6 +278,9 @@ public partial class @PlayerControllers: IInputActionCollection2, IDisposable
             @Steering.started -= instance.OnSteering;
             @Steering.performed -= instance.OnSteering;
             @Steering.canceled -= instance.OnSteering;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IKeyboardActions instance)
@@ -275,5 +304,6 @@ public partial class @PlayerControllers: IInputActionCollection2, IDisposable
         void OnReverse(InputAction.CallbackContext context);
         void OnDrift(InputAction.CallbackContext context);
         void OnSteering(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }
