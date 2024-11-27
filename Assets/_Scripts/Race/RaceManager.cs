@@ -60,6 +60,15 @@ public class RaceManager : MonoBehaviour
         Starting();
     }
 
+    private void Update()
+    {
+        //For testing, press P to finish the race and randomly generate the results
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            FinishRaceTest();
+        }
+    }
+
 
     private void Starting() 
     {
@@ -105,6 +114,16 @@ public class RaceManager : MonoBehaviour
             raceResults.lapsTimes.Add(TimeSpan.FromSeconds(Time.time - lapStartTime));
             lapStartTime = Time.time;
         }
+    }
+
+    private void FinishRaceTest()
+    {
+        raceResults.lapsTimes.Clear();
+        for (int i = 0; i < laps-1; i++)
+        {
+            raceResults.lapsTimes.Add(TimeSpan.FromSeconds(UnityEngine.Random.Range(60, 120)));
+        }
+        FinishRace();
     }
 
     private void FinishRace()
