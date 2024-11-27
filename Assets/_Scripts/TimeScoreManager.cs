@@ -13,7 +13,7 @@ public static class TimeScoreManager
         // Cargar los tiempos actuales desde PlayerPrefs
         List<TimeSpan> times = LoadTimes();
 
-        // Aï¿½adir el nuevo tiempo
+        // Añadir el nuevo tiempo
         times.Add(time);
 
         // Ordenar los tiempos de menor a mayor
@@ -59,17 +59,6 @@ public static class TimeScoreManager
             times.Add(TimeSpan.FromSeconds(time));
         }
         return times;
-    }
-
-    public static List<TimeSpan> LoadTestTimes()
-    {
-        List<TimeSpan> floatTimes = new List<TimeSpan>();
-
-        floatTimes.Add(TimeSpan.FromSeconds(100));
-        floatTimes.Add(TimeSpan.FromSeconds(200));
-        floatTimes.Add(TimeSpan.FromSeconds(300));
-
-        return floatTimes;
     }
 
     public static string FormatTime(float timeInSeconds)

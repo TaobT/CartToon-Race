@@ -33,23 +33,6 @@ public class LevelLoader : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(Level1Name);
     }
 
-    public void LoadLevel(int index)
-    {
-        if (index > 3 && index <= 0) return;
-        switch (index)
-        {
-            case 1:
-                UnityEngine.SceneManagement.SceneManager.LoadScene(Level1Name);
-                break;
-            case 2:
-                UnityEngine.SceneManagement.SceneManager.LoadScene(Level2Name);
-                break;
-            case 3:
-                UnityEngine.SceneManagement.SceneManager.LoadScene(Level3Name);
-                break;
-        }
-    }
-
     public bool LoadNextLevel()
     {
         if (!GameManager.Instance.Race1Completed)
@@ -69,10 +52,5 @@ public class LevelLoader : MonoBehaviour
         //}
 
         return false;
-    }
-
-    public void ReloadLevel()
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 }

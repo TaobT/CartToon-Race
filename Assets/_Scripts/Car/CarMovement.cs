@@ -258,7 +258,6 @@ public class CarMovement : MonoBehaviour
         isGainingBoost = true;
         isDriftingRight = InputManager.SteeringDirection > 0;
         carModel.localRotation = Quaternion.Euler(0, isDriftingRight ? driftModelRotation : -driftModelRotation, 0);
-
         foreach (TrailRenderer trail in driftMarks)
         {
             trail.emitting = true;
@@ -273,7 +272,6 @@ public class CarMovement : MonoBehaviour
         CalculateBoost();
         isGainingBoost = false;
         carModel.localRotation = Quaternion.Euler(0, 0, 0);
-
         foreach (TrailRenderer trail in driftMarks)
         {
             trail.emitting = false;
