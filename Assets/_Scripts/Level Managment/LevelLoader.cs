@@ -14,11 +14,11 @@ public class LevelLoader : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(Instance);
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 
@@ -29,8 +29,24 @@ public class LevelLoader : MonoBehaviour
 
     public void LoadLevel()
     {
-        //Load level1
         UnityEngine.SceneManagement.SceneManager.LoadScene(Level1Name);
+    }
+
+    public void LoadLevel(int index)
+    {
+        if (index < 1 || index > 3) return;
+        switch (index)
+        {
+            case 1:
+                UnityEngine.SceneManagement.SceneManager.LoadScene(Level1Name);
+                break;
+            case 2:
+                UnityEngine.SceneManagement.SceneManager.LoadScene(Level2Name);
+                break;
+            case 3:
+                UnityEngine.SceneManagement.SceneManager.LoadScene(Level3Name);
+                break;
+        }
     }
 
     public bool LoadNextLevel()
@@ -40,17 +56,22 @@ public class LevelLoader : MonoBehaviour
             UnityEngine.SceneManagement.SceneManager.LoadScene(Level1Name);
             return true;
         }
-        else if(!GameManager.Instance.Race2Completed)
+        else if (!GameManager.Instance.Race2Completed)
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(Level2Name);
             return true;
         }
-        //else if(!GameManager.Instance.Race3Completed)
-        //{
-        //    UnityEngine.SceneManagement.SceneManager.LoadScene(Level3Name);
-        //    return true;
-        //}
+        else if (!GameManager.Instance.Race3Completed)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(Level3Name);
+            return true;
+        }
 
         return false;
+    }
+
+    public void ReloadLevel()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 }
