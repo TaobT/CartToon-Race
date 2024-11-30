@@ -12,6 +12,10 @@ public class MobileInputController : MonoBehaviour
 
     private void Awake()
     {
+#if UNITY_STANDALONE_WIN || UNITY_WEBGL
+        gameObject.SetActive(false);
+#endif
+
         aceleratorBtn.OnPointerDown += AcceleratorPressed;
         aceleratorBtn.OnPointerUp += AcceleratorReleased;
 
@@ -23,6 +27,7 @@ public class MobileInputController : MonoBehaviour
 
         rightBtn.OnPointerDown += RightPressed;
         rightBtn.OnPointerUp += RightReleased;
+        //Directive to detect if the device is a mobile device
     }
 
     private void AcceleratorPressed()
